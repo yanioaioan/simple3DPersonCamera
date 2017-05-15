@@ -151,7 +151,6 @@ void NGLScene::paintGL()
   //set player pos
   m_trans.setRotation(0,yrot,0);
   m_trans.setPosition(playerpos);
-  loadMatricesToShader();
 
   //set camera pos behind the player
 //  camPos.set(playerpos);
@@ -162,6 +161,8 @@ void NGLScene::paintGL()
   float cameraz = cameradist * cos((yrot) * M_PI / 180) + playerpos.m_z;
 
   m_cam.set(ngl::Vec3(camerax,0,cameraz),playerpos,ngl::Vec3::up());
+  loadMatricesToShader();
+
   prim->draw( "teapot" );//draw player teapot
 
   m_trans.reset();
